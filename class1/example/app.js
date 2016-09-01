@@ -37,10 +37,17 @@ const getCluster = (template)=>{
 	let limit = Math.floor(Math.random()*5);
 	
 
-	if(limit==0 || limit==1) return template;
-	let airs=airports.filter((a)=> !(a==template.from || a==template.to) );
-	
+	let getPrice = (min, max)=> min + Math.floor( Math.random() * (max - min) );
 	let rem = (a,e)=> a.filter( z=> z!=e );
+
+
+	if(limit==0 || limit==1) 
+		return [Object.assign({}, template, {
+									prices: getPrice(template.prices[0], template.prices[1])
+								})
+				];
+
+	let airs=airports.filter((a)=> !(a==template.from || a==template.to) );	
 	let aux = null;
 
 	console.log("Generando cluster");
@@ -61,8 +68,10 @@ const getCluster = (template)=>{
 			airs = rem(airs, aux);
 			t.to = aux;
 		}
+		console.log(t);
 		
-		
+		t.prices =  getPrice(t.prices[0], t.prices[1]);
+		console.log(t.prices[0], t.prices[1]);
 		console.log("itera: ",x,limit,  t);		
 		stops.push(getStop(t));
 	}
@@ -81,7 +90,7 @@ const getClusters = (template)=>{
 let clusterTemplate={
 	from: "EZE",
 	to: "MIA",
-	prices: [1000,5000]
+	prices: [1000,2000]
 };
 
 app.get("/vuelos", (req, res)=>{
