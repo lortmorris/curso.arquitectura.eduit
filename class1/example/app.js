@@ -7,10 +7,19 @@ const port = process.env.PORT || 5000;
 const myserver = http.createServer(app);
 const fs = require("fs");
 
-const getStop=(template)=>{
+
+const airports = ["EZE","PE","MIA","AER","AUX","RET"];
+
+const getRandomAirport =(airs)=>{
+	console.log("airs: " ,airs);	
+	return airs[ Math.floor(Math.random()*airs.length)];
+}
+
+const getStop=(t)=>{
+	console.log(t);
 	return {
-		from: 122,
-		to: 332,
+		from: t.from,
+		to: t.to,
 		deperture: new Date(),
 		aperture: new Date(),
 		prices:{
@@ -27,22 +36,41 @@ const getStop=(template)=>{
 
 const getCluster = (template)=>{
 	let stops=[];
-	for(let x=0; x<Math.random()*5; x++){
-		stops.push(getStop(template));
+	let limit = Math.floor(Math.random()*5);
+
+	let airs=airports.filter((a)=> !(a==template.from || a==template.to) );
+	
+
+	for(let x=0; x<=limit; x++){
+
+		let t =Object.assign({}, template);
+
+		if(x==0){			
+			t.to = getRandomAirport(airs);
+		}
+
+		if(x==limit){
+			t.from = getRandomAirport(airs);			
+		}
+		
+		console.log("itera: ",x,limit,  t);		
+		//stops.push(getStop(t));
 	}
 	return stops;
 }
 
 const getClusters = (template)=>{
-	let clusters = []
+	let clusters = [];
+
 	for(let i=0; i<Math.random()*10; i++) 
-		clusters.push(getStops(template));
+		clusters.push(getCluster(template));
+	
 	return clusters;
 }
 
 let clusterTemplate={
 	from: "EZE",
-	end: "MIA",
+	to: "MIA",
 	prices: [1000,5000]
 };
 
