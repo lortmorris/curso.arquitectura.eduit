@@ -13,19 +13,18 @@ const airports = ["EZE","PE","MIA","AER","AUX","RET","LUL","POP","FRE","NIG","CB
 const getRandomAirport =(airs)=> airs[ Math.floor(Math.random()*airs.length)];
 
 
-const getStop=(t)=>{
-	console.log(t);
+const decorator=(t)=>{
 	return {
 		from: t.from,
 		to: t.to,
 		deperture: new Date(),
 		aperture: new Date(),
 		prices:{
-			adult: 1233.23,
-			child: 1000.23,
+			adult: t.prices,
+			child: t.prices * 0.8,
 			infant: 0,
 			taxes:{
-				tax: 212.43,
+				tax: t.prices * (Math.random() * 15),
 				others: 0		
 			}
 		}
@@ -68,12 +67,9 @@ const getCluster = (template)=>{
 			airs = rem(airs, aux);
 			t.to = aux;
 		}
-		console.log(t);
 		
 		t.prices =  getPrice(t.prices[0], t.prices[1]);
-		console.log(t.prices[0], t.prices[1]);
-		console.log("itera: ",x,limit,  t);		
-		stops.push(getStop(t));
+		stops.push(t);
 	}
 	return stops;
 }
@@ -81,8 +77,10 @@ const getCluster = (template)=>{
 const getClusters = (template)=>{
 	let clusters = [];
 
-	for(let i=0; i<Math.random()*10; i++) 		
-		clusters.push(getCluster(template));
+	for(let i=0; i<Math.random()*10; i++) {
+		clusters.push( getCluster(template).map( t=>decorator(t) ) );
+	}		
+		
 	
 	return clusters;
 }
