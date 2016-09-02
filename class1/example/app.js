@@ -6,6 +6,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 const myserver = http.createServer(app);
 const fs = require("fs");
+const bodyParser = require("body-parser");
+
+app.use(express.static("./public"));
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 
 const airports = ["EZE","PE","MIA","AER","AUX","RET","LUL","POP","FRE","NIG","CBA"];
@@ -85,14 +91,17 @@ const getClusters = (template)=>{
 	return clusters;
 }
 
-let clusterTemplate={
-	from: "EZE",
-	to: "MIA",
-	prices: [1000,2000]
-};
 
-app.get("/vuelos", (req, res)=>{
+
+app.post("/vuelos", (req, res)=>{
 	console.log("***************************************");
+
+	let clusterTemplate={
+		from: req.body.from,
+		to: req.body.to,
+		prices: [req.body.price,5000]
+	};
+
 	res.json(getClusters(clusterTemplate));
 });
 
