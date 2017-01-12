@@ -100,7 +100,9 @@ const getClusters = ()=> {
 
 
 const app = (req, res)=> {
-	res.end(JSON.stringify(getClusters()));
+	getClusters();
+	res.end('gracias x su visita');
+	//res.end(JSON.stringify(getClusters()));
 };
 
 const server = http.createServer(app);

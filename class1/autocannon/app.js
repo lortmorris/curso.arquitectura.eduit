@@ -1,5 +1,5 @@
 const http = require('http');
-const debug = require('debug')('app');
+const debug = require('debug')('app:lib:users');
 let counter = 0;
 
 
