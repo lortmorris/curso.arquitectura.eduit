@@ -1,0 +1,61 @@
+vuelos.com
+
+10M /d = 115 seg.
+
+=== 07:00 - 10:00 picos consulta (20%)
+2m visits
+2.000.000 / 10800 = 185
+
+=== 11:00 - 13:00 pico de compra (20%)
+2m visits
+2.000.000 / 10800 = 185
+
+
+=== 15:00 - 17:00 pico de compra (15%)
+17:00 - 20:00 picos consulta (30%)
+3.000.000 / 10800 = 208 
+
+=== 23:00 - 06:00 low traffic  (15%)
+
+=== Sizes
+115K (home)
+200K (resultado)
+200k (book 1)
+100k (book 2)
+150k (pdf/mail)
+765K = 765.000 = 382,500,000,000
+Compra el 5% del trafico, 500.000
+
+38.2500 G
+
+
+315.000 * 9500000 =  29925000000000 
+27870G
+300 x dia  
+210 x dia 
+210 x dia lan
+210 x dia 
+
+1000 dolar x dia trafico
+
+
+=== Recursos 
+
+1 dev React (front) [home, legals, results, form checkout, confirm]30dias
+1 dev api 60 dias
+1 dev dispo 180 dias.
+
+total = 180 dias.
+5K x mes x dev
+5K x mes Devop 
+5K x mes PM
+15K x mes 3 devs
+30K devop 
+30K PM
+150K x 6 meses 
+
+=== servers
+dispo 3 x 1K = 3K al mes
+API 3 x 1K = 3K al mes
+
+

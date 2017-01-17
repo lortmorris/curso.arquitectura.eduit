@@ -1,0 +1,41 @@
+swagger: '2.0'
+info:
+  title: YourApp
+  description: 'your App'
+  version: 1.0.0
+host: 'localhost:5000'
+basePath: /service/
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+
+  /about:
+    get:
+      tags:
+        - about
+      summary: About this API
+      x-swagger-router-controller: about.about
+      parameters:
+        - name: name
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: About
+          schema:
+            $ref: '#/definitions/about'
+
+
+definitions:
+
+  about:
+    type: object
+    properties:
+      version:
+        type: string
+      name:
+        type: string

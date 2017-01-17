@@ -1,0 +1,112 @@
+#!/usr/bin/env node
+
+/* eslint-disable semi */
+
+var app = require('../app');
+var debug = require('debug')('farmasun:server');
+var config = require('config');
+var http = require('http');
+
+new app(config)
+    .then((main)=> {
+        var server  =main.server;
+        var port = normalizePort(process.env.PORT || config.get('server.port'));
+
+        /**
+         * Normalize a port into a number, string, or false.
+         */
+
+        function normalizePort (val) {
+            var port = parseInt(val, 10);
+
+            if (isNaN(port)) {
+                // named pipe
+                return val;
+            }
+
+            if (port >= 0) {
+                // port number
+                return port;
+            }
+
+            return false;
+        }
+
+        /**
+         * Event listener for HTTP server "error" event.
+         */
+
+        function onError (error, port) {
+            if (error.syscall !== 'listen') {
+                throw error;
+            }
+
+            var bind = typeof port === 'string'
+                ? 'Pipe ' + port
+                : 'Port ' + port;
+
+            // handle specific listen errors with friendly messages
+            switch (error.code) {
+                case 'EACCES':
+                    console.error(bind + ' requires elevated privileges');
+                    process.exit(1);
+                    break;
+                case 'EADDRINUSE':
+                    console.error(bind + ' is already in use');
+                    process.exit(1);
+                    break;
+                default:
+                    throw error;
+            }
+        }
+
+        /**
+         * Event listener for HTTP server "listening" event.
+         */
+
+        function onListening (server) {
+            var addr = server.address();
+            var bind = typeof addr === 'string'
+                ? 'pipe ' + addr
+                : 'port ' + addr.port;
+            debug('Listening on ' + bind);
+        }
+
+        /**
+         * Gracefully terminate programs
+         */
+        var gracefulExit = function gracefulExit () {
+            console.log('exiting');
+            // server.on('close', function () {
+            process.exit(0);
+            // })
+            // server.close();
+        }
+
+
+
+        /**
+         * Create HTTP server.
+         */
+
+            // configure server callback
+        server.on('error', function () {
+            onError(port);
+        });
+
+        server.on('listening', function () {
+            onListening(server)
+        });
+
+        // If the Node process ends, close the Mongoose connection
+        process.on('SIGINT', gracefulExit).on('SIGTERM', gracefulExit);
+        process.on('uncaughtException', function (err) {
+            console.error('Caught exception: ' + err);
+        });
+
+        // Listen on provided port, on all network interfaces.
+        console.log('listen on ' + port);
+        server.listen(port);
+    }).catch((err)=>{
+        throw err;
+    });

@@ -1,0 +1,30 @@
+{
+  "db": {
+    "host": "mongodb://127.0.0.1:27017/restful",
+    "collections": ["logs", "users"]
+  },
+  "domain": "localhost",
+  "server": {
+    "dbConnectionRetry": true,
+    "maxConnectionRetryTime": 60,
+    "port": 5000
+  },
+  "app": {
+    "url": "http://127.0.0.1:5000/"
+  },
+  "service": {
+    "protocol": "http://",
+    "host": "localhost:5000",
+    "pathname": "/service"
+  },
+  "redis": {
+    "hosts": [
+      {
+        "host": "127.0.0.1",
+        "port": 6379
+      }
+    ],
+    "mastername": "master"
+  }
+
+}
