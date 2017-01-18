@@ -1,0 +1,14 @@
+{
+  "name": "geodata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "importer.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongojs": "^2.4.0"
+  }
+}
