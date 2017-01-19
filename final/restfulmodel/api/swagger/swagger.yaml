@@ -30,8 +30,44 @@ paths:
             $ref: '#/definitions/about'
 
 
-definitions:
+  /countries:
+    get:
+      tags:
+        - countries
+      summary: countries list
+      x-swagger-router-controller: universal.search
+      parameters:
+        - name: q
+          in: query
+          required: false
+          type: string
+        - name: page
+          in: query
+          required: false
+          type: number
+          default: 1
+        - name: limit
+          in: query
+          type: number
+          required: false
+          default: 30
+      responses:
+        '200':
+          description: countries list
+          schema:
+            $ref: '#/definitions/country'
 
+definitions:
+  country:
+    type: object
+    properties:
+      cca2:
+        type: string
+      name:
+        type: object
+        properties:
+          common:
+            type: string
   about:
     type: object
     properties:

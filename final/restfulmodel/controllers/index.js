@@ -72,12 +72,14 @@ function makeControllers(main) {
 	debug("main function called");
 
 	let controllers = {
-		'about': require("./about")(main)
+		'about': require("./about")(main),
+		'universal': require('./universal')(main)
 	};
 
 
 	return wrapControllers({
-		'about.about_get': controllers.about.about
+		'about.about_get': controllers.about.about,
+		'universal.search_get': controllers.universal.search
 	}, main.announce);
 }
 
