@@ -43,13 +43,18 @@ paths:
           type: string
         - name: page
           in: query
-          required: false
+          required: true
           type: number
           default: 1
+        - name: sorting
+          in: query
+          required: false
+          description: sorting by field
+          type: string
         - name: limit
           in: query
           type: number
-          required: false
+          required: true
           default: 30
       responses:
         '200':

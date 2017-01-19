@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const debug = require('debug')('restfulmodel:app');
 const mongojs = require('mongojs');
+const Universal = require('./lib/universal');
 
 
 /**
@@ -167,6 +168,7 @@ app.prototype.libs = function () {
 		self.main.libs = {};
 		self.main.libs.http = http;
 		self.main.libs.moment = moment;
+		self.main.libs.Universal = new Universal(self.main);
 
 		resolve(self.main.libs);
 	});
