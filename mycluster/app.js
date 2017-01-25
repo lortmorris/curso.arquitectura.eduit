@@ -22,10 +22,6 @@ app.get('/info', (req, res)=>{
 
 app.get('/break', (req, res)=> asd());
 
-setTimeout(()=>{
-  asdasd();
-}, Math.floor(Math.random()*60) * 1000);
-
 [...process.argv].forEach(ar=> {
   if(ar.indexOf('--port')>-1){
     const parts = ar.split('=');
