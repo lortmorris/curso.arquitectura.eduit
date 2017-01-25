@@ -7,5 +7,8 @@
     "test": "mocha"
   },
   "author": "cesar casas",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
