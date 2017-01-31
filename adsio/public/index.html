@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      fetch('http://localhost:5000/hits/?bannerId=5')
+      .then((data)=>{
+        console.log(data)
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    </script>
+  </head>
+  <body>
+    <h1>Soy un banner</h1>
+  </body>
+</html>
