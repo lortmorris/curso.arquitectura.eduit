@@ -20,13 +20,16 @@ const getRandomItem = (type='module') =>{
   return item;
 }
 
+const modulesPrice = [];
+const daysPrice = [];
+for( let x=0; x<100; x++) {
+  modulesPrice.push(getRandomItem('module'));
+  daysPrice.push(getRandomItem('days'))
+}
+
+
 const getMock = (age1, age2, age3, days) => {
-  const modulesPrice = [];
-  const daysPrice = [];
-  for( let x=0; x<100; x++) {
-    modulesPrice.push(getRandomItem('module'));
-    daysPrice.push(getRandomItem('days'))
-  }
+  console.info('Searching: ', age1, age2, age3, days);
   return {
     modulesPrice,
     daysPrice,
