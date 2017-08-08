@@ -1,0 +1,15 @@
+{
+  "name": "class2",
+  "version": "1.0.0",
+  "description": "Asistencia a viajero, example. Mocks dinámicos",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongojs": "^2.4.1"
+  }
+}
