@@ -18,7 +18,6 @@ const getRandomItem = (type='module') =>{
   if (type === 'module') {
     item.fromDays = getRandom(30);
     item.toDays = getRandom(330) + 30;
-
   }
   return item;
 }
@@ -38,10 +37,12 @@ modulesPrice.forEach(m => {
       product: m.product,
     }
   }
+
   Prices[`${m.provider}-${m.product}`].modules.push(m);
 });
 
 daysPrice.forEach(d => {
+
   if ( typeof Prices[`${d.provider}${d.product}`] === 'undefined'){
     Prices[`${d.provider}-${d.product}`] = {
       modules: [],
@@ -50,6 +51,7 @@ daysPrice.forEach(d => {
       product: d.product,
     }
   }
+
   Prices[`${d.provider}-${d.product}`].days.push(d);
 });
 
@@ -59,6 +61,7 @@ const getMock = (age1, age2, age3, days) => {
   console.info('Searching: ', age1, age2, age3, days);
   const passanges = [];
   const Results = [];
+
   if (age1) passanges.push(age1);
   if (age2) passanges.push(age2);
   if (age3) passanges.push(age3);
