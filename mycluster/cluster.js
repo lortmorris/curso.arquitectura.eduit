@@ -14,12 +14,7 @@ if (cluster.isMaster) {
   });
 } else {
 
-  let counter =0 ;
-  http.createServer((req, res)=>{
-    counter++;
-    res.end(`visitante numero ${counter} on pid: ${process.pid}`);
-  }).listen(5000);
-
+  require('./app');
   console.log(`Worker ${process.pid} `);
 
 }

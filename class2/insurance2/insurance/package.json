@@ -1,0 +1,15 @@
+{
+  "name": "insurance",
+  "version": "1.0.0",
+  "description": "example",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Cesar Casas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongojs": "^2.4.0"
+  }
+}

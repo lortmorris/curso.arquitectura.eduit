@@ -7,7 +7,8 @@ const server = http.createServer(app);
 let counter=0;
 let PORT =  5000;
 
-app.get('/', (req, res)=> res.send('counter: '+counter++));
+
+app.get('/', (req, res)=> res.send('counter: '+(counter++)+' pid:'+process.pid));
 app.get('/info', (req, res)=>{
   res.json({
     cpus: os.cpus(),
@@ -20,7 +21,9 @@ app.get('/info', (req, res)=>{
   });
 });
 
-app.get('/break', (req, res)=> asd());
+app.get('/break', (req, res)=> {
+  while(true);
+});
 
 [...process.argv].forEach(ar=> {
   if(ar.indexOf('--port')>-1){
