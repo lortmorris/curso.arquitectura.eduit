@@ -1,0 +1,14 @@
+{
+  "name": "imports",
+  "version": "1.0.0",
+  "description": "import all cvs to mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "mongojs": "^2.4.1"
+  }
+}
