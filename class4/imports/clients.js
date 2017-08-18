@@ -1,6 +1,6 @@
 
 const Clients = ({readFile, db, saveData}) => {
-    const data = readFile('clients.csv', [0, 8, 10, 13])
+    const data = readFile('clients.csv', [0, 8, 10, 13], 29)
     .map(l =>  ({
         idClient : l[0],
         description: l[1],

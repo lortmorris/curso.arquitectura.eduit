@@ -1,6 +1,6 @@
 
 const PrecioListaDetalle = ({readFile, db, saveData}) => {
-    const data = readFile('preciolistadetalle.csv', [0, 1, 20])
+    const data = readFile('preciolistadetalle.csv', [0, 1, 20], 23)
     .map(l =>  ({
         idItem : l[0],
         idList: l[1],
