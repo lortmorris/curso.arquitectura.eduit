@@ -33,10 +33,10 @@ const Application = {
 
 require('./clients')(Application)
 .then(result => {
-  return require('./items')(Application);
+  return require('./itemsstock')(Application);
 })
 .then(result => {
-  return require('./itemsstock')(Application);
+  return require('./items')(Application, result);
 })
 .then(result => {
   return require('./preciolistadetalle')(Application);
