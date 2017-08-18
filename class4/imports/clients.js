@@ -1,6 +1,14 @@
-const fs = require('fs');
-const mongojs = require('mongojs');
-const db = mongojs('mongodb://127.0.0.1:27017/farma', ['items', 'clients', 'listprices', 'stock']);
 
+const Clients = ({readFile, db, saveData}) => {
+    const data = readFile('clients.csv', [0, 8, 10, 13])
+    .map(l =>  ({
+        idClient : l[0],
+        description: l[1],
+        company: l[2],
+        clientName: l[3]
+      })
+    );
+    return saveData('clients', data);
+}
 
-
+module.exports = Clients;
