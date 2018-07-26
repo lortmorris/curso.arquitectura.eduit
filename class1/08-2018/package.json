@@ -9,6 +9,7 @@
   "author": "César Casas",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "shortid": "^2.2.12"
   }
 }

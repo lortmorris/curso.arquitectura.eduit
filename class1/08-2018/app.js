@@ -1,7 +1,25 @@
 const http = require('http');
 const express = require('express');
+const shortid = require('shortid');
+
 const app = express();
 
+const providers = {};
+const products = {};
+// 100 providers => 10 products => 25 prices
+
+for (let x = 1; x< 100; x++) {
+  providers[x] = {
+    name: shortid.generate(),
+  };
+  products[x] = {};
+  for (let y =0; y < 10; y++) {
+    products[x][y] = {
+      productName: shortid.generate(),
+    }
+  };
+
+}
 const prices = [
   {
     providerId: 1,
@@ -33,7 +51,6 @@ const prices = [
 ];
 
 const search = (age, days) => {
-  console.info('searching: ', age, days);
   return prices.filter(p => {
     // check age
     if (p.fromAge < age && p.toAge > age) {
@@ -41,7 +58,8 @@ const search = (age, days) => {
         return p;
       }
     }
-  });
+  })
+  .map((p) => ({ ...p, providerData: providers[p.providerId], productData: products[p.providerId][p.productId] }));
 }
 
 
