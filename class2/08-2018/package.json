@@ -1,0 +1,15 @@
+{
+  "name": "08-2018",
+  "version": "1.0.0",
+  "description": "first mock server",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "César Casas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "shortid": "^2.2.12"
+  }
+}
