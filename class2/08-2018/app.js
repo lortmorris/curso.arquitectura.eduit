@@ -119,10 +119,22 @@ app.get('/save', (req, res) => {
   res.json({ status });
 });
 
+
 app.get('/search', (req, res) => {
-  const result = search(parseInt(req.query.age, 10), parseInt(req.query.days, 10));
-  res.json(result);
-  fs.writeFileSync(`./results/age${req.query.age}-days${req.query.days}.json`, JSON.stringify(result));
+  const filename = `${process.cwd()}/results/age${req.query.age}-days${req.query.days}.json`;
+
+  fs.readFile(filename, (err, data) => {
+    let result = {};
+    if (err) {
+      console.info('no exists: ', filename);
+      result = search(parseInt(req.query.age, 10), parseInt(req.query.days, 10));
+      fs.writeFile(filename, JSON.stringify(result), () => {});
+    } else {
+      result = JSON.parse(data.toString());
+    }
+
+    return res.json(result);
+  });
 });
 
 const server = http.createServer(app);
