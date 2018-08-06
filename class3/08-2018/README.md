@@ -31,3 +31,13 @@ const Application = {
 const mongojs = require('mongojs');
 const db = mongojs('mongodb://127.0.0.1/cursoarq', ['users', 'products', 'providers', 'prices']);
 ```
+
+## body-parser
+(https://www.npmjs.com/package/body-parser)
+
+```javascript
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+```

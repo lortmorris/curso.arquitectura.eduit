@@ -6,12 +6,17 @@ const compression = require('compression');
 const helmet = require('helmet');
 const app = express();
 const mongojs = require('mongojs');
+const bodyParser = require('body-parser');
 const db = mongojs('mongodb://127.0.0.1', ['users', 'products', 'prices', 'providers']);
 const routes = require('./routes');
 
 app.use(compression({
 level: 9,
 }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 app.use(helmet());
 app.use( express.static('./results') );
