@@ -39,5 +39,18 @@ const db = mongojs('mongodb://127.0.0.1/cursoarq', ['users', 'products', 'provid
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 ```
+
+# Universal Pattern  
+
+```javascript
+{
+  service,
+  controller
+}
+
+service.search, service.insert, service.update, service.remove
+[module] = '/$module';
+```
+
+## Debug
