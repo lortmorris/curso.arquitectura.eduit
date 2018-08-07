@@ -1,6 +1,9 @@
 const debug = require('debug')('app:up:controller');
 
-const getModule = url => url.split('/').pop();
+const getModule = url => {
+  const parts = url.split('?');
+  return parts[0].split('/').pop();
+}
 
 const controller = ({ UniversalPattern }) => ({
   remove: async (req, res) => {
@@ -21,7 +24,11 @@ const controller = ({ UniversalPattern }) => ({
   },
   search: async (req, res) => {
     debug('search called: ', UniversalPattern);
-    const docs = await UniversalPattern.service.search(getModule(req.url), {});
+    const fields = (req.query.fields || '')
+      .split(',')
+      .map(f => ({ [f]: 1 }))
+      .reduce( (acc, current) => Object.assign(acc, current) , {});
+    const docs = await UniversalPattern.service.search(getModule(req.url), {}, fields);
     res.json({ docs });
   }
 });

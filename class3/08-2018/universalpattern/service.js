@@ -19,9 +19,9 @@ const service = ({ db }) => ({
       return resolve(doc);
     });
   }),
-  search: (module, query = {}) => new Promise((resolve, reject) => {
-    debug('search called: ', module, query);
-    db[module].find(query, {}, (err, docs) => {
+  search: (module, query = {}, fields = {}) => new Promise((resolve, reject) => {
+    debug('search called: ', module, query, fields);
+    db[module].find(query, fields, (err, docs) => {
         if (err) return reject(err);
         return resolve(docs);
     });
