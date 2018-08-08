@@ -5,7 +5,20 @@ const getModule = url => {
   return parts[0].split('/').pop();
 }
 
-const controller = ({ UniversalPattern }) => ({
+
+const validateSchema = (req, definitions) => {
+    const module = getModule(req.url);
+    req.swagger = {};
+    let completed = true;
+    Object.keys(definitions[module].properties)
+      .forEach((k) => {
+        if (req.body[k]) req.swagger[k] = req.body[k];
+        else completed = false;
+      })
+      return completed;
+};
+
+const controller = ({ UniversalPattern, swagger }) => ({
   remove: async (req, res) => {
     const _id = req.query._id;
     const result = await UniversalPattern.service.remove(getModule(req.url), _id);
@@ -13,7 +26,9 @@ const controller = ({ UniversalPattern }) => ({
   },
   insert: async (req, res) => {
     const data = req.body;
-    const result = await UniversalPattern.service.insert(getModule(req.url), data);
+    const module = getModule(req.url);
+    validateSchema(req, swagger.definitions);
+    const result = await UniversalPattern.service.insert(module, req.swagger);
     res.json({ result });
   },
   update: async (req, res) => {

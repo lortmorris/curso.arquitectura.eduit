@@ -1,9 +1,7 @@
 
-// const users = require('./users');
-
 
 const UniversalPatternRoutes = UniversalPattern => [
-  'users',
+  'Pet',
   'providers',
   'products',
   'clients',

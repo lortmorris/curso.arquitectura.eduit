@@ -1,56 +1,86 @@
-# async / await
 
-try / catch
-throw Error
+# class vs object
 
-## Errors
-(https://nodejs.org/api/errors.html)
-
-# Onion Pattern.
-
-All application is a big object, i should be access to each resource from any app member.
-
+## classic class
 ```javascript
-const Application = {
-  db,
-  app,
-  routes,
-  libs: {
-    fs,
-  },
-  redis,
-};
-```
+const getUserClass  = ({ UniversalPatter }) => {
+  return class Users {
+    constructor(data) {
+      this.username = data.username;
+      this.age = data.age;
+      this.id = data.id;
+    }
 
+    getUsername() {
+      return this.username;
+    }
 
-## mongojs
+    getAge() {
+      return this.age;
+    }
 
-(https://github.com/mafintosh/mongojs)
+    setUsername(username) {
+      this.username = username.toString();
+    }
 
-```javascript
-const mongojs = require('mongojs');
-const db = mongojs('mongodb://127.0.0.1/cursoarq', ['users', 'products', 'providers', 'prices']);
-```
+    setAge(age) {
+      this.age = parseInt(age, 10);
+    }
 
-## body-parser
-(https://www.npmjs.com/package/body-parser)
-
-```javascript
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-```
-
-# Universal Pattern  
-
-```javascript
-{
-  service,
-  controller
+    update(){
+      db.users.update(this.id, {
+        username: this.username,
+        age: this.age
+      });
+    }
+  }
 }
-
-service.search, service.insert, service.update, service.remove
-[module] = '/$module';
+const user = new User({});
 ```
 
-## Debug
+100 users = instances user.
+
+## object style
+```javascript
+  const userData = await UniversalPattern.service.search('/user', { _id: db.ObjectId('f0f0f0f0f0') }).pop();
+
+  UniversalPattern.service.update('/user', id, { ... });
+```
+
+
+
+# swagger
+this the standard for api definitions, using yaml meta language.
+
+(https://swagger.io/)
+(http://editor.swagger.io/)
+
+## swagger schema (yaml)
+(https://www.npmjs.com/package/js-yaml)
+
+```javascript
+const fs = require('fs');
+const yaml = require('js-yaml');
+try {
+  const doc = yaml.safeLoad(fs.readFileSync(process.cwd() + '/swagger/index.yaml', 'utf8'));
+  console.log(doc);
+} catch (e) {
+  console.log(e);
+}
+```
+(https://lodash.com/docs/4.17.10#merge)
+
+## swagger-ui
+(https://www.npmjs.com/package/swagger-ui)
+## swagger-tools
+
+```bash
+Error: rlOrSO is required   : check the swaggerDoc json
+```
+
+# subcontrollers
+
+## insertBefore
+## getterBefore
+## afterInsert
+## afterGetter
