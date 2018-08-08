@@ -80,7 +80,34 @@ Error: rlOrSO is required   : check the swaggerDoc json
 
 # subcontrollers
 
-## insertBefore
-## getterBefore
-## afterInsert
-## afterGetter
+ Request ==== > [ Swagger Metadata => Controller (UP) => Response ]
+
+ Request ==== > [ Swagger Metadata => Controller (UP) => Response ]
+                                      |
+                                      |
+                                      => subcontroller (previus)
+
+
+
+user = {
+  email,
+  password,
+  coordinates,
+  googleGeoData: null
+};
+
+subcontroller (beforeInsert ) => user.googleGeoData = {}  => Controller
+
+GET: /Pets
+Request => controller => subcontroller (afterGet) => [likes] => output
+
+
+# Resfultmodel 2
+(https://github.com/lortmorris/restfulmodel2)
+
+(http://localhost:3000/service/docs/#/)
+
+## Challenge
+- Clone repo and install
+- go to api folder and create a new endpoint  'services'
+- try to run services methods into /services/docs
