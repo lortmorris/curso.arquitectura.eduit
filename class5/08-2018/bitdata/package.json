@@ -1,0 +1,14 @@
+{
+  "name": "bitdata",
+  "version": "1.0.0",
+  "description": "for bit data",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "César Casas",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.18.1"
+  }
+}

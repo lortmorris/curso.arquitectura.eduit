@@ -74,3 +74,23 @@ for (let x =0 ; x< str.length; x++) console.info(str[x].charCodeAt().toString(2)
 // 20 seconds => 1 package (3 minute) x 60 (180 hour) x 24 (4320 day) x (129600 month)
 // 1000 taxis = 129600000 (month)
 ```
+
+# UDP server
+
+## ACK
+
+```javascript
+const tmp = 'abc789pepe*43';
+for (let x =0 ; x< tmp.length; x++) {
+  const decimal = tmp[x].charCodeAt();
+  console.info(decimal);
+}
+
+(97 ^ 98 ^ 99 ^ 55 ^ 56 ^ 57 ^ 112 ^ 101).toString(16) === 43
+
+send('ACK*43')
+```
+
+# Challenge.
+- Try to fix decoder implementation.
+- Add checksum process.
