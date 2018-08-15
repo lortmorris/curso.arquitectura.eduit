@@ -1,0 +1,96 @@
+paths:
+  /users:
+    get:
+      tags:
+        - users
+      summary: users list
+      x-swagger-router-controller: universal.search
+      parameters:
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/sorting'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/fields'
+        - $ref: '#/parameters/apikey'
+        - name: coordinates
+          in: query
+          type: string
+          default: "0,0,0"
+          description: search by coordinates struct. long,lat,radius
+
+      responses:
+        '200':
+          description: users
+          schema:
+            $ref: '#/definitions/user'
+    put:
+      tags:
+        - users
+      summary: insert new users
+      x-swagger-router-controller: universal.insert
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/user'
+      responses:
+        '200':
+          description: report added
+          schema:
+            $ref: '#/definitions/user'
+
+    delete:
+      tags:
+        - users
+      summary: users report
+      x-swagger-router-controller: universal.remove
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - name: _id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: deleted users
+          schema:
+            $ref: '#/definitions/user'
+
+    patch:
+      tags:
+        - users
+      summary: options user
+      x-swagger-router-controller: universal.update
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/user'
+      responses:
+        '200':
+          description: updated users
+          schema:
+            $ref: '#/definitions/user'
+
+definitions:
+  user:
+    type: object
+    properties:
+      _id:
+        type: string
+        minLength: 24
+        maxLength: 24
+      fname:
+        type: string
+        default: noName
+      lname:
+        type: string
+      email:
+        type: string
+        required: true
+      password:
+        type: string

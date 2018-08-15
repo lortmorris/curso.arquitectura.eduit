@@ -1,0 +1,9 @@
+{
+  "connection" :{
+    "mongodb": {
+      "uri": "mongodb://127.0.0.1/blogtest"
+    }
+  },
+  "basePath": "/services",
+  "host": "localhost"
+}

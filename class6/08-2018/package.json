@@ -1,0 +1,23 @@
+{
+  "name": "arquitectura-class6-08-2018",
+  "version": "1.0.0",
+  "description": "Universal Pattern",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "universal-pattern",
+    "redis",
+    "microservices",
+    "aws",
+    "circleci"
+  ],
+  "author": "César Casas",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^2.0.1",
+    "express": "^4.16.3",
+    "universal-pattern": "^1.0.0"
+  }
+}
