@@ -11,7 +11,9 @@ paths:
         - $ref: '#/parameters/sorting'
         - $ref: '#/parameters/limit'
         - $ref: '#/parameters/fields'
-        - $ref: '#/parameters/apikey'
+        - name: x-access-token
+          in: headers
+          required: true
         - name: coordinates
           in: query
           type: string

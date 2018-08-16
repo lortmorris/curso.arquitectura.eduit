@@ -68,5 +68,4 @@ server3
 [ELB1, ELB2, ELB3] => ELBMaster
 
 
-
 # AWS.
