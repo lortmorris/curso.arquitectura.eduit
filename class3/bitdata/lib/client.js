@@ -10,7 +10,7 @@ const Client = config => ({
 		const str = encoder(barcode, price, location, datetime);
 		console.info(' STR: ', str);
 			client.send(str, 0, str.length, config.port, config.ip, (err) => {
-				console.log(err);
+				console.log('Error? :', err);
 	  		client.close();
 		});
 

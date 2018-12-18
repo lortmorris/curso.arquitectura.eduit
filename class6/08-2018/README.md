@@ -69,3 +69,14 @@ server3
 
 
 # AWS.
+
+## new server (debian)
+```bash
+$ apt-get updarte && apt-get upgrade
+$ apt-get install tmux git-core htop build-essential redis-server
+$ wget https://nodejs.org/dist/v10.8.0/node-v10.8.0.tar.gz
+$ tar zxvf node-v10.8.0.tar.gz
+$ cd node-v10.8.0
+$ ./configure
+
+```

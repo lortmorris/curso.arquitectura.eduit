@@ -1,0 +1,22 @@
+{
+  "env": "stage",
+  "basePath": "/service",
+  "host": "stage.domain.com",
+  "port": 3000,
+  "name": "rm2",
+  "version": "0.1",
+  "jwt": {
+    "secret": "secretwuu"
+  },
+  "connection": {
+    "mongodb": {
+      "uri": "mongodb://db.domain.com/rm2",
+      "collections": ["categories"]
+    },
+    "redis": {
+      "host": "redis.domain.com",
+      "port": "6379"
+    }
+  }
+
+}

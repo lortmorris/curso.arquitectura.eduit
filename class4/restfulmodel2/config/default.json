@@ -1,0 +1,22 @@
+{
+  "env": "dev",
+  "basePath": "/service",
+  "host": "localhost",
+  "port": 3000,
+  "name": "rm2",
+  "version": "0.1",
+  "jwt": {
+    "secret": "secretwuu"
+  },
+  "connection": {
+    "mongodb": {
+      "uri": "mongodb://localhost/rm2",
+      "collections": ["categories"]
+    },
+    "redis": {
+      "host": "localhost",
+      "port": "6379"
+    }
+  }
+
+}

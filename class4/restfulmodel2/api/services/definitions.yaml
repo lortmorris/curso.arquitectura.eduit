@@ -1,0 +1,84 @@
+paths:
+  /services:
+    get:
+      tags:
+        - services
+      summary: services list
+      x-swagger-router-controller: Universal.search
+      parameters:
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/sorting'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/fields'
+      responses:
+        '200':
+          description: services list
+          schema:
+            $ref: '#/definitions/services'
+    put:
+      tags:
+        - services
+      summary: insert new services
+      x-swagger-router-controller: Universal.insert
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/services'
+      responses:
+        '200':
+          description: added services
+          schema:
+            $ref: '#/definitions/services'
+
+    delete:
+      tags:
+        - services
+      summary: delete services
+      x-swagger-router-controller: Universal.remove
+      parameters:
+        - name: _id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: deleted services
+          schema:
+            $ref: '#/definitions/services'
+
+    patch:
+      tags:
+        - services
+      summary: options services
+      x-swagger-router-controller: Universal.update
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/services'
+      responses:
+        '200':
+          description: updated services
+          schema:
+            $ref: '#/definitions/services'
+
+definitions:
+  services:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+        minLength: 2
+      category:
+        type: object
+        properties:
+          name:
+            type: string
+          _id:
+            type: string

@@ -1,0 +1,61 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+const application = require('../app')(true);
+const debug = require('debug')('server');
+const http = require('http');
+const config = require('config');
+
+function normalizePort(val) {
+  const localport = parseInt(val, 10);
+
+  if (isNaN(localport)) return localport;
+  if (localport >= 0) return localport;
+  return false;
+}
+
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  const bind = typeof port === 'string'
+    ? `Pipe ${port}`
+    : `Port ${port}`;
+
+  switch (error.code) {
+  case 'EACCES':
+    console.error(`${bind} requires elevated privileges`);
+    return process.exit(1);
+  case 'EADDRINUSE':
+    console.error(`${bind} is already in use`);
+    return process.exit(1);
+  default:
+    throw error;
+  }
+}
+
+
+application.then(({ app }) => {
+  const port = normalizePort(process.env.PORT || config.port);
+  app.set('port', port);
+
+  const server = http.createServer(app);
+  const onListening = () => {
+    const addr = server.address();
+    const bind = typeof addr === 'string'
+      ? `pipe ${addr}`
+      : `port ${addr.port}`;
+    debug(`Listening on ${bind}`);
+    console.info(`Listening on ${bind}`);
+  };
+
+
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+});
