@@ -1,0 +1,18 @@
+{
+  "name": "prices-01-2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "./node_modules/.bin/nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "install": "^0.12.2",
+    "nodemon": "^1.18.9",
+    "npm": "^6.5.0"
+  }
+}
