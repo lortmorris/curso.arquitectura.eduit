@@ -20,6 +20,15 @@ const routes = ({ app, Controllers }) => {
   app.post('/sales', (req, res) => {
     return res.json({});
   });
+
+  app.get('/stats', async (req, res) => {
+    const stats = await Promise.all([
+      Controllers.Stats.users,
+      Controllers.Stats.sales,
+    ]);
+  });
+
+  
 };
 
 module.exports = routes;
