@@ -1,4 +1,4 @@
-const debug = require('debug')('services:products');
+const debug = require('debug')('commerce:services:products');
 
 const Products = ({ db }) => ({
   getAll: (clientId = 0 , query = {}) => new Promise((resolve, reject) => {

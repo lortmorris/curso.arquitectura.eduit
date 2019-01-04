@@ -1,8 +1,9 @@
-const debug = require('debug')('services:users');
+const debug = require('debug')('commerce:services:users');
 
 
 const Users = ({ db }) => ({
   getAll: (query = {}) => new Promise((resolve, reject) => {
+    debug('called Users.getAll: ', query);
     db.users.find(query, {}, (err, docs) => {
       if (err) {
         debug('Error: ', err);
