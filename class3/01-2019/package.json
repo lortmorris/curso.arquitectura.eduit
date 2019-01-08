@@ -1,0 +1,11 @@
+{
+  "name": "01-2019",
+  "version": "1.0.0",
+  "description": "DUP Server and bits manipulation",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "César Casas",
+  "license": "ISC"
+}
