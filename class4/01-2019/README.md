@@ -47,3 +47,6 @@ Auth0
 
 passport: login fb.
 html: click login => show fb login window => show endpoint protected.
+
+DB: MongoDB
+Login counter.
