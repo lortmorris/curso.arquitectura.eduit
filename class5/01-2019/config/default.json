@@ -1,0 +1,12 @@
+{
+  "basePath": "/services",
+  "host": "localhost",
+  "port": 5000,
+  "name": "socialnetwork",
+  "version": "0.1",
+  "connection": {
+    "mongodb": {
+      "uri": "mongodb://127.0.0.1/cursoarq"
+    }
+  }
+}

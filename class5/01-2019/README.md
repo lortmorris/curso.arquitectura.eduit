@@ -66,3 +66,16 @@ controller.search: {
   db.getCollection(${module}).find(q, {});
 }
 users - carts - feed
+
+
+
+# Universal pattern
+
+Steps:
+- npm install universal-pattern express config
+- create config dir and put default.json files
+- create folder swagger
+- put you yaml file into swagger folder, and enjoy
+
+Running: 
+http://localhost:5000/services/docs/

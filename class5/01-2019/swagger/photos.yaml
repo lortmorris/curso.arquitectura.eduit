@@ -1,0 +1,105 @@
+paths:
+  /photos:
+    get:
+      tags:
+        - photos
+      summary: photos list
+      x-swagger-router-controller: universal.search
+      parameters:
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/sorting'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/fields'
+
+      responses:
+        '200':
+          description: photo list
+          schema:
+            $ref: '#/definitions/photo'
+
+    delete:
+      tags:
+        - photos
+      summary: delete photo
+      x-swagger-router-controller: universal.remove
+      parameters:
+        - name: _id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: deleted photo
+          schema:
+            $ref: '#/definitions/photo'
+
+    put:
+      tags:
+        - photos
+      summary: insert new photo
+      x-swagger-router-controller: universal.insert
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/photoInput'
+      responses:
+        '200':
+          description: photo added
+          schema:
+            $ref: '#/definitions/photo'
+
+definitions:
+  photoInput:
+    type: object
+    properties:
+      carId:
+        type: string
+        format: mongoId
+        x-swagger-lookup:
+          collection: cars
+          populate:
+            - _id
+            - name
+            - brands
+      userId:
+        type: string
+        format: mongoId
+        x-swagger-lookup:
+          collection: users
+          populate:
+            - _id
+            - firstname
+            - lastname
+      photo:
+        type: string
+
+  photo:
+    type: object
+    properties:
+      userId:
+        type: string
+      users:
+        type: object
+        properties:
+          _id:
+            type: string
+          firstname:
+            type: string
+          lastname:
+            type: string
+      carId:
+        type: string
+      cars:
+        type: object
+        properties:
+          _id:
+            type: string
+          name:
+            type: string
+          brands:
+            type: object
+      photo:
+        type: string

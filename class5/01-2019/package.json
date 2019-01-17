@@ -4,7 +4,8 @@
   "description": "a Social Network RESTful api example",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "watch": "./node_modules/.bin/nodemon"
   },
   "keywords": [
     "social",
@@ -17,7 +18,10 @@
   "author": "César Casas",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.0.1",
     "express": "^4.16.4",
-    "mongojs": "^2.6.0"
+    "mongojs": "^2.6.0",
+    "nodemon": "^1.18.9",
+    "universal-pattern": "^1.0.18"
   }
 }
