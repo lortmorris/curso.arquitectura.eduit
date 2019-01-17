@@ -1,0 +1,23 @@
+{
+  "name": "social-network-example-cars",
+  "version": "1.0.0",
+  "description": "a Social Network RESTful api example",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "social",
+    "network",
+    "mongodb",
+    "universal",
+    "up",
+    "pattern"
+  ],
+  "author": "César Casas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongojs": "^2.6.0"
+  }
+}
