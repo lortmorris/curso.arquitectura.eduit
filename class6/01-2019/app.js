@@ -3,29 +3,26 @@ const http = require('http');
 const os = require('os');
 const express = require('express');
 const mongojs = require('mongojs');
+const uuidv1 = require('uuid/v1');
+
+const controllers = require('./controllers');
+
 
 const app = express();
-
+const db = mongojs('mongodb://127.0.0.1/cursoarq');
 const numCPUs = os.cpus();
 
+
+const Application  = {
+  app,
+  os,
+  db,
+};
+
 app.use((req, res, next) => {
-  console.info(req.url, process.pid);
+  req.uuid = uuidv1();
+  console.info(req.uuid, req.url, process.pid, req.headers, req.body, req.query);
   next();
-});
-
-
-app.get('/health', (req, res) => {
-  res.json({
-    pid: process.pid,
-    uptime: process.uptime(),
-    hostname: os.hostname,
-    cpu: numCPUs,
-    memory: {
-      total: os.totalmem(),
-      freemen: os.freemem(),
-    },
-    hostuptime: os.uptime(),
-  });
 });
 
 if (cluster.isMaster) {
@@ -42,4 +39,5 @@ if (cluster.isMaster) {
   http.createServer(app).listen(8000);
 
   console.log(`Worker ${process.pid} started`);
+  controllers(Application);
 }
