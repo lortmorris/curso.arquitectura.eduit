@@ -97,3 +97,46 @@ forever list  // show all forever apps running
 
 R:1          R:1          R:1           R:1 < return error.
 [Search] => [Results] => [Checkout] => {Payment Gateway}
+
+
+(https://www.npmjs.com/package/winston)
+
+
+# Owasp
+
+(http://sqlmap.org/)
+
+# nodemailer
+
+(https://nodemailer.com)
+
+
+# Handlebars
+
+(https://handlebarsjs.com/)
+(https://www.npmjs.com/package/express-handlebars)
+
+
+# SaaS
+(https://mlab.com/)
+(https://redislabs.com/)
+(https://socket.io/)
+(https://zeit.co/)
+
+
+# autocannon
+(https://www.npmjs.com/package/autocannon)
+
+```bash
+cesars-MacBook-Pro:01-2019 cesarcasas$ autocannon http://localhost:5000/
+Running 10s test @ http://localhost:5000/
+10 connections
+
+Stat         Avg      Stdev   Max     
+Latency (ms) 0.01     0.07    8.33    
+Req/Sec      40220.37 2893.66 41593   
+Bytes/Sec    4.44 MB  321 kB  4.58 MB
+
+442k requests in 11s, 48.7 MB read
+
+```

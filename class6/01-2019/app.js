@@ -21,11 +21,10 @@ const Application  = {
 
 app.use((req, res, next) => {
   req.uuid = uuidv1();
-  console.info(req.uuid, req.url, process.pid, req.headers, req.body, req.query);
   next();
 });
 
-if (cluster.isMaster) {
+/*if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
   for (let i = 0; i < numCPUs.length; i++) {
@@ -35,9 +34,8 @@ if (cluster.isMaster) {
   cluster.on('exit', (worker, code, signal) => {
     console.log(`worker ${worker.process.pid} died`);
   });
-} else {
+} else {*/
   http.createServer(app).listen(8000);
-
-  console.log(`Worker ${process.pid} started`);
+  // console.log(`Worker ${process.pid} started`);
   controllers(Application);
-}
+//}
